@@ -1,9 +1,12 @@
 import pyautogui
 import pymsgbox
 from pathlib import Path
+import dearpygui.dearpygui as dpg
+dpg.create_context()
+
 pyautogui.FailSafeException
 def abre_dominio():
-    pasta_atual = Path(__file__).parent
+    pasta_atual = Path(r"C:\Users\gcont\OneDrive\Documentos\GitHub\automacoes")
     pasta_imagens = pasta_atual / 'imagens'
     pasta_dominio = pasta_imagens / 'pasta_dominio.png'
     dominio_icone = pasta_imagens / 'dominio_escrita_fiscal.png'
@@ -26,6 +29,7 @@ def abre_dominio():
                     break
                 except:
                     print("Reprocessando...")
+                    pyautogui.sleep(1)
                     pass
             senha_mover = pyautogui.locateOnScreen(str(senha_dominio),confidence=0.9)
             pyautogui.moveTo(senha_mover,duration=1)
@@ -38,15 +42,17 @@ def abre_dominio():
         print('Erro, pasta não encontrada')
     return
 
+with dpg.window(tag="Abrir dominio"):
+    dpg.add_text("Tela de testes para futuras automações.")
+    dpg.add_button(label="Abrir",callback=abre_dominio)
 
-pasta_atual = Path(__file__).parent
-pasta_imagens = pasta_atual / 'imagens'
-dominio_barra = pasta_imagens /'dominio_barra_tarefas.png'
-try:
-    dominio_barra_identificacao = pyautogui.locateOnScreen(str(dominio_barra),confidence=0.9)
-except:
-    dominio_barra_identificacao=False
-if dominio_barra_identificacao:
-    print("Domínio já está aberta...")
-else:
-    abre_dominio()
+
+dpg.create_viewport(title='Custom Title', width=600, height=300)
+dpg.set_viewport_large_icon('icone.ico')
+dpg.set_viewport_small_icon('icone.ico')
+dpg.setup_dearpygui()
+dpg.show_viewport()
+dpg.set_primary_window("Abrir dominio",True)
+dpg.start_dearpygui()
+dpg.destroy_context()
+
