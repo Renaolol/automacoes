@@ -105,7 +105,7 @@ def search_componentes():
                                                                 sys_op,lista_discos])
 
 with dpg.window(tag="Componentes"):
-    with dpg.group(horizontal=True):
+    with dpg.group(horizontal=True,parent="Componentes"):
         dpg.add_button(label="Fechar",callback=dpg.destroy_context)
         dpg.add_button(label="Buscar componentes",callback=search_componentes)
         dpg.add_text(("Conexão bem sucedida") if conexao_feita == True else ("Aguardando conexão"))
