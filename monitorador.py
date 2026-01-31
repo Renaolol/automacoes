@@ -6,15 +6,11 @@ import dearpygui.dearpygui as dpg
 import pyodbc
 import psycopg2
 import pythoncom
+from dotenv import load_dotenv
+import os
 c = wmi.WMI()
-CONEXAO={
-    "host": "10.0.0.10",
-    "dbname": "inventario_computadores",
-    "user": "postgres",
-    "password": "0176",
-    "port":"5432",
-}
-
+load_dotenv()
+CONEXAO=os.getenv("conexao")
 def salvar(sender, app_data,user_data):
     conn = psycopg2.connect(**CONEXAO)
     cursor = conn.cursor()
@@ -36,7 +32,7 @@ def salvar(sender, app_data,user_data):
         print(x)
 
 def verificar_conexao():
-    conn = psycopg2.connect(**CONEXAO)
+    conn = psycopg2.connect(CONEXAO)
     if conn:
         return True
     else:   
