@@ -27,23 +27,18 @@ Table of Contents
 About
 -----
 This repository contains tools and automation for creating and maintaining an office hardware inventory. Typical responsibilities:
-- Add / remove equipment (computers, monitors, peripherals)
-- Record purchase / warranty / assignment information
-- Export reports (CSV, etc.)
-- Provide CLI or scriptable interfaces for automation and integration with other systems
+- Add / remove equipment (computers, monitors, peripherals) (remove equipment not working for now, bcse idnt create this feature yet)
+- works for now only for the windows SO
 
 Features
 --------
 - Inventory CRUD operations for hardware items
 - PostgreSQL-backed storage
-- CLI and/or scripts for bulk import/export and common tasks
-- Designed to be extended for integrations (asset tags, helpdesk, etc.)
 
 Tech stack
 ----------
 - Python (project language)
 - PostgreSQL (primary persistence)
-- (Optional) any chosen Python libraries for CLI, ORM, or web interface
 
 Requirements
 ------------
@@ -60,7 +55,6 @@ Installation
 
 2. Create a virtual environment and activate it:
    python -m venv .venv
-   source .venv/bin/activate   # macOS / Linux
    .venv\Scripts\activate      # Windows (PowerShell)
 
 3. Install dependencies:
