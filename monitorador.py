@@ -92,8 +92,8 @@ def search_componentes():
                     lista_discos.append([local[0],round(total/1073741824,2) ])
                     dpg.add_text(f'{local[0]}')
                     dpg.add_text(f' Total {round(total/1073741824,2)}Gb') 
-                    dpg.add_text(f' Used {round(used/1073741824,2)}Gb')
-                    dpg.add_text(f' Free {round(free/1073741824,2)}Gb')
+                    dpg.add_text(f' Usado {round(used/1073741824,2)}Gb')
+                    dpg.add_text(f' Livre {round(free/1073741824,2)}Gb')
                 except Exception as e:
                     pass
         dpg.add_button(label="Salvar",callback=salvar,user_data=[pc_name,marca_mb,modelo_mb,serie_mb,video,
